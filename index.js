@@ -10,6 +10,10 @@ import clientRoutes from './routes/client.js'
 import salesRoutes from './routes/sales.js'
 import managementRoutes from './routes/management.js'
 
+// Data Imports
+import User from "./models/User.js"
+import { dataUser }from "./data/index.js"
+
 // CONFIGURATIONS
 // Congigure Env File
 dotenv.config()
@@ -42,7 +46,10 @@ mongoose
         useUnifiedTopology: true
     })
     .then(() => {
-       app.listen(PORT, () => console.log(`Server Port: ${PORT}`))  
+        app.listen(PORT, () => console.log(`Server Port: ${PORT}`))  
+
+        /* ONLY ADD DATA ONE TIME - WILL CAUSE ERRORS WITH MULTIPLE DB INJECTIONS*/
+        User.insertMany(dataUser)
     })
     .catch((error) => console.log(`${error} did not connect`))
 
