@@ -12,7 +12,9 @@ import managementRoutes from './routes/management.js'
 
 // Data Imports
 import User from "./models/User.js"
-import { dataUser }from "./data/index.js"
+import Product from './models/Product.js'
+import ProductStat from './models/ProductStat.js'
+import { dataUser , dataProduct , dataProductStat }from "./data/index.js"
 
 // CONFIGURATIONS
 // Congigure Env File
@@ -40,6 +42,7 @@ app.use("/sales", salesRoutes) // Sales Routes
 
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 9000
+
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -50,6 +53,8 @@ mongoose
 
         /* ONLY ADD DATA ONE TIME - WILL CAUSE ERRORS WITH MULTIPLE DB INJECTIONS - WATCH AUTO SAVE!!!!*/
         // User.insertMany(dataUser)
+        Product.insertMany(dataProduct)
+        ProductStat.insertMany(dataProductStat)
     })
     .catch((error) => console.log(`${error} did not connect`))
 
