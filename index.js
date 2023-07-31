@@ -48,8 +48,8 @@ mongoose
     .then(() => {
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`))  
 
-        /* ONLY ADD DATA ONE TIME - WILL CAUSE ERRORS WITH MULTIPLE DB INJECTIONS*/
-        User.insertMany(dataUser)
+        /* ONLY ADD DATA ONE TIME - WILL CAUSE ERRORS WITH MULTIPLE DB INJECTIONS - WATCH AUTO SAVE!!!!*/
+        // User.insertMany(dataUser)
     })
     .catch((error) => console.log(`${error} did not connect`))
 
