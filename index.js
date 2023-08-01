@@ -53,10 +53,10 @@ mongoose
         app.listen(PORT, () => console.log(`Server Port: ${PORT}`))  
 
         /* ONLY ADD DATA ONE TIME - WILL CAUSE ERRORS WITH MULTIPLE DB INJECTIONS - WATCH AUTO SAVE!!!!*/
-        // User.insertMany(dataUser)
         // Product.insertMany(dataProduct)
         // ProductStat.insertMany(dataProductStat)
         // Transaction.insertMany(dataTransaction)
+        // User.insertMany(dataUser)
     })
     .catch((error) => console.log(`${error} did not connect`))
 
